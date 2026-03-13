@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 
+export type Language = "en" | "pt";
+
 export type NavItem = {
   label: string;
   href: string;
@@ -16,6 +18,11 @@ export type HeroContent = {
   description: string;
   primaryCta: HeroLink;
   secondaryCta: HeroLink;
+  featurePanel: {
+    eyebrow: string;
+    title: string;
+    description: string;
+  };
   stats: Array<{
     label: string;
     value: string;

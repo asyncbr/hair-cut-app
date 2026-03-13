@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import { Footer } from "@/components/layout/footer";
+import { LanguageProvider } from "@/components/providers/language-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { seoConfig } from "@/config/seo";
 import { siteConfig } from "@/config/site";
@@ -67,11 +68,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body style={themeStyles}>
-        <div className="site-shell">
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-        </div>
+        <LanguageProvider>
+          <div className="site-shell">
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+          </div>
+        </LanguageProvider>
       </body>
     </html>
   );

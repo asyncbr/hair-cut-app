@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 
-import { ContactSection } from "@/components/sections/contact-section";
-import { PageHero } from "@/components/ui/page-hero";
-import { seoConfig } from "@/config/seo";
-import { contactDetails } from "@/content/contact";
-import { pageHeroes } from "@/content/pages";
+import { ContactPageClient } from "@/components/pages/contact-page-client";
+import { defaultLanguage, getDictionary } from "@/content/dictionaries";
 
-const pageSeo = seoConfig.pages.contact;
+const pageSeo = getDictionary(defaultLanguage).seo.pages.contact;
 
 export const metadata: Metadata = {
   title: pageSeo.title,
@@ -26,10 +23,5 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  return (
-    <>
-      <PageHero {...pageHeroes.contact} />
-      <ContactSection details={contactDetails} />
-    </>
-  );
+  return <ContactPageClient />;
 }

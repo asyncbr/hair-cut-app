@@ -4,16 +4,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
+import { LanguageSwitcher } from "@/components/layout/language-switcher";
+import { useDictionary } from "@/components/providers/language-provider";
 import { LinkButton } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import { company } from "@/content/company";
-import { contactDetails } from "@/content/contact";
-import { navigation } from "@/content/navigation";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const dictionary = useDictionary();
 
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[rgba(18,13,11,0.86)] backdrop-blur-xl">
@@ -23,13 +23,13 @@ export function Navbar() {
             N
           </span>
           <span>
-            <span className="block text-sm font-semibold">{company.name}</span>
-            <span className="block text-xs text-[var(--color-muted)]">{company.tagline}</span>
+            <span className="block text-sm font-semibold">{dictionary.company.name}</span>
+            <span className="block text-xs text-[var(--color-muted)]">{dictionary.company.tagline}</span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
-          {navigation.map((item) => (
+        <nav className="hidden items-center gap-7 md:flex" aria-label={dictionary.ui.primaryNavigationAriaLabel}>
+          {dictionary.navigation.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -43,8 +43,9 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
-          <LinkButton href={contactDetails.whatsappHref} label="Book Now" />
+        <div className="hidden items-center gap-3 md:flex">
+          <LanguageSwitcher />
+          <LinkButton href={dictionary.contactDetails.whatsappHref} label={dictionary.ui.navbarCta} />
         </div>
 
         <button
@@ -53,7 +54,7 @@ export function Navbar() {
           onClick={() => setIsOpen((value) => !value)}
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
-          aria-label="Toggle menu"
+          aria-label={dictionary.ui.toggleMenuAriaLabel}
         >
           <span className="text-lg">{isOpen ? "×" : "☰"}</span>
         </button>
@@ -62,7 +63,8 @@ export function Navbar() {
       {isOpen ? (
         <div id="mobile-menu" className="border-t border-[var(--color-border)] bg-[var(--color-surface)] md:hidden">
           <Container className="flex flex-col gap-2 py-4">
-            {navigation.map((item) => (
+            <LanguageSwitcher className="justify-between px-1 py-2" />
+            {dictionary.navigation.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -72,7 +74,11 @@ export function Navbar() {
                 {item.label}
               </Link>
             ))}
-            <LinkButton href={contactDetails.whatsappHref} label="Book on WhatsApp" className="mt-2 w-full" />
+            <LinkButton
+              href={dictionary.contactDetails.whatsappHref}
+              label={dictionary.ui.mobileNavbarCta}
+              className="mt-2 w-full"
+            />
           </Container>
         </div>
       ) : null}

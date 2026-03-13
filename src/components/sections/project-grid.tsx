@@ -1,3 +1,5 @@
+"use client";
+
 import { ProjectCard } from "@/components/sections/project-card";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";

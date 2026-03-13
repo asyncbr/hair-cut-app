@@ -1,3 +1,5 @@
+"use client";
+
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import type { TrustItem } from "@/lib/types";

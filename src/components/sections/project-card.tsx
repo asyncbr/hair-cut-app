@@ -1,6 +1,11 @@
+"use client";
+
+import { useDictionary } from "@/components/providers/language-provider";
 import type { Project } from "@/lib/types";
 
 export function ProjectCard({ project }: { project: Project }) {
+  const dictionary = useDictionary();
+
   return (
     <article className="overflow-hidden rounded-[1.75rem] border border-[var(--color-border)] bg-[var(--color-surface)] shadow-[var(--shadow-card)]">
       <div className="h-52 bg-[linear-gradient(135deg,rgba(217,162,95,0.18),rgba(76,49,25,0.08))] p-6">
@@ -14,15 +19,21 @@ export function ProjectCard({ project }: { project: Project }) {
       </div>
       <div className="space-y-5 p-6">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-foreground)]">Challenge</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-foreground)]">
+            {dictionary.ui.projectCard.challengeLabel}
+          </p>
           <p className="mt-2 text-sm leading-7 text-[var(--color-muted)]">{project.challenge}</p>
         </div>
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-foreground)]">Approach</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-foreground)]">
+            {dictionary.ui.projectCard.approachLabel}
+          </p>
           <p className="mt-2 text-sm leading-7 text-[var(--color-muted)]">{project.solution}</p>
         </div>
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-foreground)]">Outcome</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-foreground)]">
+            {dictionary.ui.projectCard.outcomeLabel}
+          </p>
           <p className="mt-2 text-sm leading-7 text-[var(--color-muted)]">{project.outcome}</p>
         </div>
         <div className="flex flex-wrap gap-2">

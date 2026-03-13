@@ -81,6 +81,12 @@ export const homePageContent: HomePageContent = {
       label: "View services",
       href: "/services/",
     },
+    featurePanel: {
+      eyebrow: "Inside the shop",
+      title: "Warm lighting, clean tools, and a chair experience that feels unrushed from start to finish.",
+      description:
+        "Northline is designed to feel sharp and calm at the same time, with enough attention on the details that the final result reads instantly.",
+    },
     stats: [
       { value: "Cuts", label: "House cuts, scissor work, tapers, and skin fades" },
       { value: "Beards", label: "Trim, line, sculpt, and balance with your haircut" },

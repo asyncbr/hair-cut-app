@@ -1,9 +1,11 @@
+"use client";
+
 import { LinkButton } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import type { HeroContent } from "@/lib/types";
 
-export function HeroSection({ eyebrow, title, description, primaryCta, secondaryCta, stats }: HeroContent) {
+export function HeroSection({ eyebrow, title, description, primaryCta, secondaryCta, featurePanel, stats }: HeroContent) {
   return (
     <Section className="overflow-hidden pb-16 pt-14 sm:pt-20 lg:pb-24">
       <Container>
@@ -33,13 +35,9 @@ export function HeroSection({ eyebrow, title, description, primaryCta, secondary
                   ))}
                 </div>
                 <div className="rounded-[1.5rem] border border-[var(--color-border)] bg-[var(--color-accent-soft)] p-6">
-                  <p className="text-sm uppercase tracking-[0.22em] text-[var(--color-accent)]">Inside the shop</p>
-                  <p className="mt-4 text-2xl font-semibold text-[var(--color-foreground)]">
-                    Warm lighting, clean tools, and a chair experience that feels unrushed from start to finish.
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">
-                    Northline is designed to feel sharp and calm at the same time, with enough attention on the details that the final result reads instantly.
-                  </p>
+                  <p className="text-sm uppercase tracking-[0.22em] text-[var(--color-accent)]">{featurePanel.eyebrow}</p>
+                  <p className="mt-4 text-2xl font-semibold text-[var(--color-foreground)]">{featurePanel.title}</p>
+                  <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">{featurePanel.description}</p>
                 </div>
               </div>
             </div>

@@ -1,3 +1,5 @@
+"use client";
+
 import type { SectionProps } from "@/lib/types";
 import { cn } from "@/lib/utils";
 

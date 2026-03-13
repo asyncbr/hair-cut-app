@@ -1,14 +1,9 @@
 import type { Metadata } from "next";
 
-import { CTASection } from "@/components/sections/cta-section";
-import { ProjectGrid } from "@/components/sections/project-grid";
-import { PageHero } from "@/components/ui/page-hero";
-import { seoConfig } from "@/config/seo";
-import { contactDetails } from "@/content/contact";
-import { pageHeroes } from "@/content/pages";
-import { projects } from "@/content/projects";
+import { WorkPageClient } from "@/components/pages/work-page-client";
+import { defaultLanguage, getDictionary } from "@/content/dictionaries";
 
-const pageSeo = seoConfig.pages.work;
+const pageSeo = getDictionary(defaultLanguage).seo.pages.work;
 
 export const metadata: Metadata = {
   title: pageSeo.title,
@@ -28,22 +23,5 @@ export const metadata: Metadata = {
 };
 
 export default function WorkPage() {
-  return (
-    <>
-      <PageHero {...pageHeroes.work} />
-      <ProjectGrid
-        eyebrow="Signature outcomes"
-        title="Northline appointments are shaped around context, not one-size-fits-all templates"
-        description="The best result depends on how you wear the style, how often you book, and whether the appointment is for maintenance or a key event."
-        projects={projects}
-      />
-      <CTASection
-        eyebrow="Ready for your version?"
-        title="Book an appointment that fits your schedule and the look you need."
-        description="Northline can help you plan the right timing for routine upkeep, event grooming, or a complete refresh."
-        primary={{ href: contactDetails.whatsappHref, label: "Book on WhatsApp" }}
-        secondary={{ href: `mailto:${contactDetails.email}`, label: "Send appointment details" }}
-      />
-    </>
-  );
+  return <WorkPageClient />;
 }
