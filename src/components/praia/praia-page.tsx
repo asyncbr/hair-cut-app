@@ -11,6 +11,8 @@ export function PraiaPage() {
     praiaDoCorteContent;
   const year = new Date().getFullYear();
   const defaultWhatsappHref = `https://wa.me/${contacts[0].phoneDigits}?text=${encodeURIComponent(praiaDoCorteContent.whatsappMessage)}`;
+  const professionalWhatsappHref = (phoneDigits: string, name: string) =>
+    `https://wa.me/${phoneDigits}?text=${encodeURIComponent(`${praiaDoCorteContent.whatsappMessage} Quero agendar com ${name}.`)}`;
 
   return (
     <div className="praia-page bg-[#04111f] text-white">
@@ -263,7 +265,14 @@ export function PraiaPage() {
 
                 <div className="mt-6 grid gap-4">
                   {contacts.map((contactItem) => (
-                    <article key={contactItem.name} className="rounded-[1.7rem] border border-white/10 bg-white/5 p-5">
+                    <a
+                      key={contactItem.name}
+                      href={professionalWhatsappHref(contactItem.phoneDigits, contactItem.name)}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`Agendar com ${contactItem.name} pelo WhatsApp`}
+                      className="block cursor-pointer rounded-[1.7rem] border border-white/10 bg-white/5 p-5 transition hover:border-[#3FA7D6] hover:bg-white/8 active:scale-[0.99]"
+                    >
                       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                         <div>
                           <p className="text-lg font-black uppercase text-white">{contactItem.name}</p>
@@ -273,8 +282,11 @@ export function PraiaPage() {
                           </p>
                           <p className="mt-2 text-sm font-medium text-[#C99218]">{contactItem.phoneDisplay}</p>
                         </div>
+                        <span className="inline-flex items-center text-sm font-semibold text-white">
+                          Agendar
+                        </span>
                       </div>
-                    </article>
+                    </a>
                   ))}
                 </div>
               </div>
