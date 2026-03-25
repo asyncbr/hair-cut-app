@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/container";
 import { praiaDoCorteContent } from "@/content/customers/praia-do-corte";
 
 export function PraiaPage() {
-  const { site, navigation, hero, services, differentiators, gallery, process, contacts, address, contact, footer } =
+  const { site, navigation, hero, services, differentiators, gallery, process, contacts, address, workingHours, contact, footer } =
     praiaDoCorteContent;
   const year = new Date().getFullYear();
   const defaultWhatsappHref = `https://wa.me/${contacts[0].phoneDigits}?text=${encodeURIComponent(praiaDoCorteContent.whatsappMessage)}`;
@@ -261,6 +261,15 @@ export function PraiaPage() {
                 <div className="mt-6 rounded-[1.6rem] border border-white/10 bg-[#071f36] p-5">
                   <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#2ECC71]">Endereço</p>
                   <p className="mt-3 text-lg font-semibold text-white">{address}</p>
+                  <p className="mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-[#2ECC71]">Horário</p>
+                  <div className="mt-2 grid gap-2">
+                    {workingHours.map((item) => (
+                      <div key={item.label} className="flex items-center justify-between gap-4 text-sm text-[#c8dceb]">
+                        <span>{item.label}</span>
+                        <span className="font-medium text-white">{item.value}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 <div className="mt-6 grid gap-4">

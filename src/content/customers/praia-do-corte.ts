@@ -46,6 +46,11 @@ export const praiaDoCorteContent = {
     },
   ],
   address: "Rua Jan Monet, 106 - Jardim Modelo, São Paulo - SP (região da Zona Norte/Jaçanã)",
+  workingHours: [
+    { label: "Segunda a sexta", value: "9h às 21h" },
+    { label: "Sábado", value: "10h às 22h" },
+    { label: "Domingo", value: "10h às 18h" },
+  ],
   hero: {
     eyebrow: "Barbearia com identidade local",
     title: "O corte que é a sua praia",
