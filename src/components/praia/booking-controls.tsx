@@ -54,7 +54,7 @@ export function PraiaBookingControls({ className = "", buttonClassName = "", sel
           href={createWhatsappHref(selectedContact.phoneDigits, selectedContact.name)}
           target="_blank"
           rel="noreferrer"
-          className={`inline-flex min-h-13 shrink-0 items-center justify-center rounded-full bg-[#F4D35E] px-6 py-3 text-sm font-semibold text-[#111111] transition hover:bg-[#ffd54f] ${buttonClassName}`}
+          className={`inline-flex min-h-13 shrink-0 items-center justify-center rounded-full bg-[#C99218] px-6 py-3 text-sm font-semibold text-[#08111a] transition hover:bg-[#DFAB2C] ${buttonClassName}`}
         >
           {booking.buttonLabel}
         </a>

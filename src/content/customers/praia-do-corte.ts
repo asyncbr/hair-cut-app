@@ -110,14 +110,20 @@ export const praiaDoCorteContent = {
   ],
   gallery: [
     {
+      image: "/brands/praia-gallery-1.png",
+      alt: "Corte masculino com fade limpo e topo cacheado na Praia do Corte",
       title: "Fade com assinatura",
       description: "Acabamento limpo, transição precisa e presença forte do primeiro ao último detalhe.",
     },
     {
+      image: "/brands/praia-gallery-2.png",
+      alt: "Corte com barba desenhada e acabamento preciso na Praia do Corte",
       title: "Barba no eixo",
       description: "Desenho alinhado para valorizar o rosto e manter o visual sempre bem resolvido.",
     },
     {
+      image: "/brands/praia-gallery-3.png",
+      alt: "Corte clássico com barba cheia e acabamento premium na Praia do Corte",
       title: "Clássico com atitude",
       description: "Estilo versátil para rotina, trabalho, evento e qualquer ocasião que peça presença.",
     },
@@ -149,9 +155,9 @@ export const praiaDoCorteContent = {
     description:
       "Escolha o barbeiro, mande sua mensagem e combine do jeito mais prático para você.",
     form: {
-      title: "Envie sua mensagem",
+      title: "Fale pelo WhatsApp",
       description:
-        "Se preferir, envie seus dados e siga direto para o WhatsApp com a mensagem pronta.",
+        "Preencha os dados abaixo e continue o atendimento direto no WhatsApp.",
       fields: {
         professional: "Profissional",
         name: "Nome",

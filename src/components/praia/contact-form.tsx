@@ -94,7 +94,7 @@ export function PraiaContactForm() {
               </option>
             ))}
           </select>
-          {errors.professional ? <p className="mt-2 text-sm text-[#F4D35E]">{errors.professional}</p> : null}
+          {errors.professional ? <p className="mt-2 text-sm text-[#C99218]">{errors.professional}</p> : null}
         </div>
 
         <div>
@@ -109,7 +109,7 @@ export function PraiaContactForm() {
             placeholder={placeholders.name}
             className="w-full rounded-2xl border border-white/10 bg-[#071f36] px-4 py-3 text-sm text-white outline-none transition placeholder:text-[#7ca3bf] focus:border-[#3FA7D6]"
           />
-          {errors.name ? <p className="mt-2 text-sm text-[#F4D35E]">{errors.name}</p> : null}
+          {errors.name ? <p className="mt-2 text-sm text-[#C99218]">{errors.name}</p> : null}
         </div>
 
         <div>
@@ -124,7 +124,7 @@ export function PraiaContactForm() {
             placeholder={placeholders.phone}
             className="w-full rounded-2xl border border-white/10 bg-[#071f36] px-4 py-3 text-sm text-white outline-none transition placeholder:text-[#7ca3bf] focus:border-[#3FA7D6]"
           />
-          {errors.phone ? <p className="mt-2 text-sm text-[#F4D35E]">{errors.phone}</p> : null}
+          {errors.phone ? <p className="mt-2 text-sm text-[#C99218]">{errors.phone}</p> : null}
         </div>
 
         <div>
@@ -139,12 +139,12 @@ export function PraiaContactForm() {
             placeholder={placeholders.message}
             className="w-full rounded-2xl border border-white/10 bg-[#071f36] px-4 py-3 text-sm text-white outline-none transition placeholder:text-[#7ca3bf] focus:border-[#3FA7D6]"
           />
-          {errors.message ? <p className="mt-2 text-sm text-[#F4D35E]">{errors.message}</p> : null}
+          {errors.message ? <p className="mt-2 text-sm text-[#C99218]">{errors.message}</p> : null}
         </div>
 
         <button
           type="submit"
-          className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#F4D35E] px-5 py-3 text-sm font-semibold text-[#111111] transition hover:bg-[#ffd54f]"
+          className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#C99218] px-5 py-3 text-sm font-semibold text-[#08111a] transition hover:bg-[#DFAB2C]"
         >
           {submitLabel}
         </button>
