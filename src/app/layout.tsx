@@ -1,80 +1,53 @@
-import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 
 import "./globals.css";
 
-import { Footer } from "@/components/layout/footer";
-import { LanguageProvider } from "@/components/providers/language-provider";
-import { Navbar } from "@/components/layout/navbar";
-import { seoConfig } from "@/config/seo";
-import { siteConfig } from "@/config/site";
-import { themeConfig } from "@/config/theme";
+import { SiteChrome } from "@/components/layout/site-chrome";
+import { praiaDoCorteContent } from "@/content/customers/praia-do-corte";
 import { absoluteUrl } from "@/lib/utils";
 
-const themeStyles: CSSProperties = {
-  "--color-background": themeConfig.colors.background,
-  "--color-surface": themeConfig.colors.surface,
-  "--color-surface-alt": themeConfig.colors.surfaceAlt,
-  "--color-card": themeConfig.colors.card,
-  "--color-foreground": themeConfig.colors.foreground,
-  "--color-muted": themeConfig.colors.mutedForeground,
-  "--color-accent": themeConfig.colors.accent,
-  "--color-accent-strong": themeConfig.colors.accentStrong,
-  "--color-accent-soft": themeConfig.colors.accentSoft,
-  "--color-border": themeConfig.colors.border,
-  "--radius-xl": themeConfig.radii.xl,
-  "--radius-pill": themeConfig.radii.pill,
-  "--shadow-card": themeConfig.shadows.card,
-} as CSSProperties;
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.siteUrl),
+  metadataBase: new URL(praiaDoCorteContent.site.domain),
   title: {
-    default: seoConfig.defaultTitle,
-    template: seoConfig.titleTemplate,
+    default: praiaDoCorteContent.seo.title,
+    template: `%s | ${praiaDoCorteContent.site.name}`,
   },
-  description: seoConfig.defaultDescription,
+  description: praiaDoCorteContent.seo.description,
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
-    url: siteConfig.siteUrl,
-    title: seoConfig.defaultTitle,
-    description: seoConfig.defaultDescription,
-    locale: siteConfig.locale,
-    siteName: "Northline Barber Co.",
+    url: praiaDoCorteContent.site.domain,
+    title: praiaDoCorteContent.seo.ogTitle,
+    description: praiaDoCorteContent.seo.ogDescription,
+    locale: praiaDoCorteContent.site.locale,
+    siteName: praiaDoCorteContent.site.name,
     images: [
       {
-        url: absoluteUrl(siteConfig.siteUrl, siteConfig.defaultOgImage),
+        url: absoluteUrl(praiaDoCorteContent.site.domain, praiaDoCorteContent.site.logo),
         width: 1200,
         height: 630,
-        alt: "Northline Barber Co. website preview",
+        alt: `Logo da ${praiaDoCorteContent.site.name}`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: seoConfig.defaultTitle,
-    description: seoConfig.defaultDescription,
-    images: [absoluteUrl(siteConfig.siteUrl, siteConfig.defaultOgImage)],
+    title: praiaDoCorteContent.seo.ogTitle,
+    description: praiaDoCorteContent.seo.ogDescription,
+    images: [absoluteUrl(praiaDoCorteContent.site.domain, praiaDoCorteContent.site.logo)],
   },
   icons: {
-    icon: [{ url: "/favicon/favicon.svg", type: "image/svg+xml" }],
+    icon: [{ url: praiaDoCorteContent.site.logo, type: "image/svg+xml" }],
   },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body style={themeStyles}>
-        <LanguageProvider>
-          <div className="site-shell">
-            <Navbar />
-            <main>{children}</main>
-            <Footer />
-          </div>
-        </LanguageProvider>
+    <html lang="pt-BR">
+      <body>
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );

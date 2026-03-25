@@ -14,11 +14,12 @@ export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const dictionary = useDictionary();
+  const resolveHref = (href: string) => (href === "/" ? "/northline/" : href);
 
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[rgba(18,13,11,0.86)] backdrop-blur-xl">
       <Container className="flex min-h-20 items-center justify-between gap-4">
-        <Link href="/" className="flex items-center gap-3 text-[var(--color-foreground)]">
+        <Link href="/northline/" className="flex items-center gap-3 text-[var(--color-foreground)]">
           <span className="inline-flex size-10 items-center justify-center rounded-2xl bg-[var(--color-accent-soft)] text-sm font-semibold text-[var(--color-accent)]">
             N
           </span>
@@ -32,10 +33,10 @@ export function Navbar() {
           {dictionary.navigation.map((item) => (
             <Link
               key={item.href}
-              href={item.href}
+              href={resolveHref(item.href)}
               className={cn(
                 "text-sm transition hover:text-[var(--color-foreground)]",
-                pathname === item.href ? "text-[var(--color-foreground)]" : "text-[var(--color-muted)]",
+                pathname === resolveHref(item.href) ? "text-[var(--color-foreground)]" : "text-[var(--color-muted)]",
               )}
             >
               {item.label}
@@ -67,7 +68,7 @@ export function Navbar() {
             {dictionary.navigation.map((item) => (
               <Link
                 key={item.href}
-                href={item.href}
+                href={resolveHref(item.href)}
                 className="rounded-2xl px-4 py-3 text-sm text-[var(--color-foreground)] hover:bg-white/5"
                 onClick={() => setIsOpen(false)}
               >

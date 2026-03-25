@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
 
-import { PraiaPage } from "@/components/praia/praia-page";
-import { praiaDoCorteContent } from "@/content/customers/praia-do-corte";
+import { HomePageClient } from "@/components/pages/home-page-client";
+import { defaultLanguage, getDictionary } from "@/content/dictionaries";
 
-const pageSeo = praiaDoCorteContent.seo;
+const pageSeo = getDictionary(defaultLanguage).seo.pages.home;
 
 export const metadata: Metadata = {
   title: pageSeo.title,
   description: pageSeo.description,
   alternates: {
-    canonical: pageSeo.canonicalPath,
+    canonical: "/northline/",
   },
   openGraph: {
     title: pageSeo.ogTitle,
     description: pageSeo.ogDescription,
-    url: pageSeo.canonicalPath,
+    url: "/northline/",
   },
   twitter: {
     title: pageSeo.ogTitle,
@@ -22,6 +22,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
-  return <PraiaPage />;
+export default function NorthlineHomePage() {
+  return <HomePageClient />;
 }

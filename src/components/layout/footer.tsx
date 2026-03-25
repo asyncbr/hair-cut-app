@@ -8,6 +8,7 @@ import { Container } from "@/components/ui/container";
 
 export function Footer() {
   const dictionary = useDictionary();
+  const resolveHref = (href: string) => (href === "/" ? "/northline/" : href);
 
   return (
     <footer className="border-t border-[var(--color-border)] bg-[var(--color-surface)]">
@@ -27,7 +28,7 @@ export function Footer() {
             <ul className="mt-4 space-y-3">
               {group.links.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-[var(--color-muted)] transition hover:text-white">
+                  <Link href={resolveHref(link.href)} className="text-sm text-[var(--color-muted)] transition hover:text-white">
                     {link.label}
                   </Link>
                 </li>
