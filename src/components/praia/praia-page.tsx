@@ -1,20 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { PraiaBookingControls } from "@/components/praia/booking-controls";
 import { PraiaContactForm } from "@/components/praia/contact-form";
 import { Container } from "@/components/ui/container";
 import { praiaDoCorteContent } from "@/content/customers/praia-do-corte";
-
-function whatsappHref(phoneDigits: string, name?: string) {
-  const base = praiaDoCorteContent.whatsappMessage;
-  const message = name ? `${base} Quero agendar com ${name}.` : base;
-  return `https://wa.me/${phoneDigits}?text=${encodeURIComponent(message)}`;
-}
 
 export function PraiaPage() {
   const { site, navigation, hero, services, differentiators, gallery, process, contacts, address, contact, footer } =
     praiaDoCorteContent;
   const year = new Date().getFullYear();
+  const defaultWhatsappHref = `https://wa.me/${contacts[0].phoneDigits}?text=${encodeURIComponent(praiaDoCorteContent.whatsappMessage)}`;
 
   return (
     <div className="praia-page bg-[#04111f] text-white">
@@ -24,7 +20,13 @@ export function PraiaPage() {
           <div className="flex flex-col gap-5 lg:gap-7">
             <div className="flex items-center justify-between gap-4">
               <Link href="/" className="flex items-center gap-3">
-                <Image src={site.logo} alt={`Logo da ${site.name}`} width={56} height={56} className="size-14 rounded-2xl" />
+                <Image
+                  src={site.logo}
+                  alt={`Logo da ${site.name}`}
+                  width={96}
+                  height={96}
+                  className="h-16 w-16 rounded-2xl object-contain sm:h-20 sm:w-20"
+                />
                 <div>
                   <p className="text-lg font-black uppercase tracking-[0.18em] text-white">{site.name}</p>
                   <p className="text-xs uppercase tracking-[0.24em] text-[#F4D35E]">{site.slogan}</p>
@@ -32,7 +34,7 @@ export function PraiaPage() {
               </Link>
 
               <a
-                href={whatsappHref(contacts[0].phoneDigits)}
+                href={defaultWhatsappHref}
                 target="_blank"
                 rel="noreferrer"
                 className="hidden min-h-11 items-center justify-center rounded-full border border-[#3FA7D6] bg-[#0D3B66] px-5 text-sm font-semibold text-white transition hover:bg-[#144b81] sm:inline-flex"
@@ -67,19 +69,7 @@ export function PraiaPage() {
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-[#c8dceb]">{hero.description}</p>
 
-              <div className="mt-7 flex flex-wrap gap-3">
-                {contacts.map((contactItem) => (
-                  <a
-                    key={contactItem.name}
-                    href={whatsappHref(contactItem.phoneDigits, contactItem.name)}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#F4D35E] px-5 py-3 text-sm font-semibold text-[#111111] transition hover:bg-[#ffd54f]"
-                  >
-                    {`Agendar com ${contactItem.name}`}
-                  </a>
-                ))}
-              </div>
+              <PraiaBookingControls className="mt-7 max-w-2xl" buttonClassName="sm:min-w-56" />
 
               <ul className="mt-8 grid gap-3 sm:grid-cols-3">
                 {hero.highlights.map((item) => (
@@ -134,7 +124,7 @@ export function PraiaPage() {
                 Soluções objetivas para quem quer presença e praticidade
               </h2>
               <p className="mt-4 text-base leading-7 text-[#a7c5da]">
-                Corte, barba e atendimento em domicílio com linguagem direta, acabamento profissional e foco em conversão rápida para o WhatsApp.
+                Corte, barba e atendimento em domicílio com linguagem direta, acabamento profissional e agendamento simples.
               </p>
             </div>
 
@@ -181,11 +171,11 @@ export function PraiaPage() {
               <div className="max-w-2xl">
                 <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#F4D35E]">Galeria / Estilo</p>
                 <h2 className="mt-4 text-3xl font-black uppercase tracking-tight text-white sm:text-4xl">
-                  Estrutura pronta para fotos reais, prova social e repertório visual da marca
+                  Estilo, acabamento e identidade em cada atendimento
                 </h2>
               </div>
               <p className="max-w-lg text-sm leading-7 text-[#a7c5da]">
-                Os blocos abaixo já estão organizados para receber imagens futuras sem refazer layout nem conteúdo.
+                Cortes e barba com leitura de estilo, execução precisa e acabamento pensado para manter presença no dia a dia.
               </p>
             </div>
 
@@ -260,16 +250,11 @@ export function PraiaPage() {
                         <div>
                           <p className="text-lg font-black uppercase text-white">{contactItem.name}</p>
                           <p className="text-sm text-[#a7c5da]">{contactItem.role}</p>
+                          <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#2ECC71]">
+                            {contactItem.available ? "Disponível" : "Indisponível"}
+                          </p>
                           <p className="mt-2 text-sm font-medium text-[#F4D35E]">{contactItem.phoneDisplay}</p>
                         </div>
-                        <a
-                          href={whatsappHref(contactItem.phoneDigits, contactItem.name)}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex min-h-11 items-center justify-center rounded-full bg-[#3FA7D6] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#52b6e4]"
-                        >
-                          {`Agendar com ${contactItem.name}`}
-                        </a>
                       </div>
                     </article>
                   ))}
@@ -282,6 +267,9 @@ export function PraiaPage() {
                 <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#2ECC71]">Formulário</p>
                 <h3 className="mt-4 text-2xl font-black uppercase text-white">{contact.form.title}</h3>
                 <p className="mt-4 text-sm leading-7 text-[#c8dceb]">{contact.form.description}</p>
+                <div className="mt-6">
+                  <PraiaBookingControls buttonClassName="sm:min-w-56" />
+                </div>
                 <div className="mt-6">
                   <PraiaContactForm />
                 </div>
@@ -299,14 +287,14 @@ export function PraiaPage() {
             <p className="mt-4 text-sm text-[#F4D35E]">{address}</p>
           </div>
 
-          <div className="grid gap-3 text-sm text-[#c8dceb]">
-            <a href={contacts.length > 0 ? whatsappHref(contacts[0].phoneDigits) : "#"} target="_blank" rel="noreferrer">
-              WhatsApp principal
-            </a>
-            <a href={footer.creditHref} target="_blank" rel="noreferrer">
+          <div className="grid gap-4 text-sm text-[#d8e7f2]">
+            <div className="rounded-[1.75rem] border border-white/10 bg-[rgba(255,255,255,0.05)] p-4">
+              <PraiaBookingControls buttonClassName="w-full text-[#07111d]" selectClassName="w-full" />
+            </div>
+            <a href={footer.creditHref} target="_blank" rel="noreferrer" className="font-medium text-white transition hover:text-[#F4D35E]">
               {footer.creditLabel} | asyncti.com
             </a>
-            <p>{`© ${year} ${site.name}. ${footer.copyrightLabel}.`}</p>
+            <p className="text-[#b8cedd]">{`© ${year} ${site.name}. ${footer.copyrightLabel}.`}</p>
           </div>
         </Container>
       </footer>

@@ -1,26 +1,31 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 import { praiaDoCorteContent } from "@/content/customers/praia-do-corte";
 
-const initialValues = {
-  name: "",
-  phone: "",
-  message: "",
+type FormValues = {
+  professional: string;
+  name: string;
+  phone: string;
+  message: string;
 };
 
-type FormErrors = Partial<Record<keyof typeof initialValues, string>>;
+type FormErrors = Partial<Record<keyof FormValues, string>>;
 
 export function PraiaContactForm() {
   const { contacts, contact, whatsappMessage } = praiaDoCorteContent;
-  const [values, setValues] = useState(initialValues);
+  const availableContacts = contacts.filter((contactItem) => contactItem.available);
+  const [values, setValues] = useState<FormValues>({
+    professional: availableContacts[0]?.phoneDigits ?? "",
+    name: "",
+    phone: "",
+    message: "",
+  });
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
 
-  const primaryContact = useMemo(() => contacts[0], [contacts]);
-
-  const handleChange = (field: keyof typeof initialValues, value: string) => {
+  const handleChange = (field: keyof FormValues, value: string) => {
     setValues((current) => ({ ...current, [field]: value }));
     setErrors((current) => ({ ...current, [field]: undefined }));
     setSubmitted(false);
@@ -28,6 +33,10 @@ export function PraiaContactForm() {
 
   const validate = () => {
     const nextErrors: FormErrors = {};
+
+    if (!values.professional.trim()) {
+      nextErrors.professional = "Selecione um profissional.";
+    }
 
     if (!values.name.trim()) {
       nextErrors.name = "Informe seu nome.";
@@ -52,8 +61,14 @@ export function PraiaContactForm() {
       return;
     }
 
-    const composedMessage = `${whatsappMessage}\n\nNome: ${values.name}\nTelefone: ${values.phone}\nMensagem: ${values.message}`;
-    const href = `https://wa.me/${primaryContact.phoneDigits}?text=${encodeURIComponent(composedMessage)}`;
+    const selectedContact = availableContacts.find((contactItem) => contactItem.phoneDigits === values.professional);
+
+    if (!selectedContact) {
+      return;
+    }
+
+    const composedMessage = `${whatsappMessage} Quero agendar com ${selectedContact.name}.\n\nNome: ${values.name}\nTelefone: ${values.phone}\nMensagem: ${values.message}`;
+    const href = `https://wa.me/${selectedContact.phoneDigits}?text=${encodeURIComponent(composedMessage)}`;
     window.open(href, "_blank", "noopener,noreferrer");
     setSubmitted(true);
   };
@@ -63,6 +78,25 @@ export function PraiaContactForm() {
   return (
     <form onSubmit={handleSubmit} className="rounded-[2rem] border border-white/10 bg-[rgba(255,255,255,0.04)] p-6 sm:p-7">
       <div className="grid gap-5">
+        <div>
+          <label className="mb-2 block text-sm font-semibold text-white" htmlFor="contact-professional">
+            {fields.professional}
+          </label>
+          <select
+            id="contact-professional"
+            value={values.professional}
+            onChange={(event) => handleChange("professional", event.target.value)}
+            className="w-full rounded-2xl border border-white/10 bg-[#071f36] px-4 py-3 text-sm text-white outline-none transition focus:border-[#3FA7D6]"
+          >
+            {availableContacts.map((contactItem) => (
+              <option key={contactItem.phoneDigits} value={contactItem.phoneDigits}>
+                {contactItem.name}
+              </option>
+            ))}
+          </select>
+          {errors.professional ? <p className="mt-2 text-sm text-[#F4D35E]">{errors.professional}</p> : null}
+        </div>
+
         <div>
           <label className="mb-2 block text-sm font-semibold text-white" htmlFor="contact-name">
             {fields.name}
@@ -116,7 +150,7 @@ export function PraiaContactForm() {
         </button>
       </div>
 
-      <p className="mt-4 text-sm leading-6 text-[#a7c5da]">{helper}</p>
+      {helper ? <p className="mt-4 text-sm leading-6 text-[#a7c5da]">{helper}</p> : null}
       {submitted ? <p className="mt-3 text-sm font-medium text-[#2ECC71]">{successLabel}</p> : null}
     </form>
   );

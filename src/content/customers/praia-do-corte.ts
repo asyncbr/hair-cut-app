@@ -4,7 +4,7 @@ export const praiaDoCorteContent = {
     slogan: "O corte que é a sua praia",
     domain: "https://praiadocorte.com.br",
     locale: "pt_BR",
-    logo: "/brands/praia-do-corte-logo.svg",
+    logo: "/brands/praia-do-corte.png",
   },
   seo: {
     title: "Praia do Corte | Barbearia com estilo e atendimento em São Paulo",
@@ -23,21 +23,29 @@ export const praiaDoCorteContent = {
     { label: "Contato", href: "#contato" },
   ],
   whatsappMessage: "Fala, vim pelo site da Praia do Corte e quero agendar um horário.",
+  booking: {
+    selectLabel: "Escolha o profissional disponível",
+    selectPlaceholder: "Selecione um profissional",
+    buttonLabel: "Agendar no WhatsApp",
+    helper: "",
+  },
   contacts: [
+    {
+      name: "Ryck",
+      role: "Barbeiro e responsável pela barbearia",
+      phoneDisplay: "(11) 9 5962-9676",
+      phoneDigits: "5511959629676",
+      available: true,
+    },
     {
       name: "Natanael",
       role: "Barbeiro",
       phoneDisplay: "(11) 9 4069-0641",
       phoneDigits: "5511940690641",
-    },
-    {
-      name: "Ryck",
-      role: "Barbeiro",
-      phoneDisplay: "(11) 9 5962-9676",
-      phoneDigits: "5511959629676",
+      available: true,
     },
   ],
-  address: "Rua Jar. Manet, 51 - Jd. Maedela",
+  address: "Rua Jan Monet, 106 - Jardim Modelo, São Paulo - SP (região da Zona Norte/Jaçanã)",
   hero: {
     eyebrow: "Barbearia com identidade local",
     title: "O corte que é a sua praia",
@@ -103,15 +111,15 @@ export const praiaDoCorteContent = {
   gallery: [
     {
       title: "Fade com assinatura",
-      description: "Estrutura marcada, laterais limpas e acabamento forte.",
+      description: "Acabamento limpo, transição precisa e presença forte do primeiro ao último detalhe.",
     },
     {
       title: "Barba no eixo",
-      description: "Desenho limpo para reforçar presença e equilíbrio facial.",
+      description: "Desenho alinhado para valorizar o rosto e manter o visual sempre bem resolvido.",
     },
     {
       title: "Clássico com atitude",
-      description: "Corte versátil para rotina, encontro e ocasião especial.",
+      description: "Estilo versátil para rotina, trabalho, evento e qualquer ocasião que peça presença.",
     },
   ],
   process: [
@@ -141,21 +149,23 @@ export const praiaDoCorteContent = {
     description:
       "Escolha o barbeiro, mande sua mensagem e combine do jeito mais prático para você.",
     form: {
-      title: "Prefere escrever antes?",
+      title: "Envie sua mensagem",
       description:
-        "Preencha os dados e gere uma mensagem pronta para seguir pelo WhatsApp sem depender de integração no deploy.",
+        "Se preferir, envie seus dados e siga direto para o WhatsApp com a mensagem pronta.",
       fields: {
+        professional: "Profissional",
         name: "Nome",
         phone: "Telefone",
         message: "Mensagem",
       },
       placeholders: {
+        professional: "Selecione o profissional",
         name: "Seu nome",
         phone: "(11) 9 9999-9999",
         message: "Quero agendar um corte para esta semana.",
       },
       submitLabel: "Enviar pelo WhatsApp",
-      helper: "O formulário valida os dados e abre a conversa com a mensagem preenchida.",
+      helper: "",
       successLabel: "Abrindo o WhatsApp com sua mensagem.",
     },
   },
