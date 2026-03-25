@@ -62,7 +62,7 @@ export const praiaDoCorteContent = {
       { value: "São Paulo", label: "Presença local com atendimento próximo" },
     ],
     feature: {
-      eyebrow: "Identidade da marca",
+      eyebrow: "Nosso forte",
       title: "Barbearia com clima de rua, praia e confiança.",
       description:
         "Uma estética forte, profissional e acessível para quem quer se cuidar sem cair em visual genérico.",
