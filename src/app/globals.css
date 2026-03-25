@@ -17,7 +17,7 @@ body {
   min-height: 100vh;
   background: #04111f;
   color: white;
-  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  font-family: Georgia, "Times New Roman", serif;
   text-rendering: optimizeLegibility;
 }
 
@@ -50,7 +50,7 @@ img {
 
 .praia-page {
   min-height: 100vh;
-  font-family: "Arial Narrow", "Trebuchet MS", "Segoe UI", sans-serif;
+  font-family: Georgia, "Times New Roman", serif;
 }
 
 ::selection {

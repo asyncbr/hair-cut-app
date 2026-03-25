@@ -39,7 +39,7 @@ export function PraiaBookingControls({ className = "", buttonClassName = "", sel
             id={selectId}
             value={selectedContact.phoneDigits}
             onChange={(event) => setSelectedPhone(event.target.value)}
-            className="min-h-13 w-full appearance-none rounded-full border border-white/12 bg-[#071f36] px-5 pr-12 text-sm font-medium text-white outline-none transition focus:border-[#3FA7D6]"
+            className="min-h-13 w-full appearance-none rounded-full border border-white/12 bg-[rgba(4,20,36,0.92)] px-5 pr-12 text-sm font-semibold uppercase tracking-[0.12em] text-white outline-none transition focus:border-[#3FA7D6]"
           >
             {availableContacts.map((contact) => (
               <option key={contact.phoneDigits} value={contact.phoneDigits}>
@@ -54,7 +54,7 @@ export function PraiaBookingControls({ className = "", buttonClassName = "", sel
           href={createWhatsappHref(selectedContact.phoneDigits, selectedContact.name)}
           target="_blank"
           rel="noreferrer"
-          className={`inline-flex min-h-13 shrink-0 items-center justify-center rounded-full bg-[#C99218] px-6 py-3 text-sm font-semibold text-[#08111a] transition hover:bg-[#DFAB2C] ${buttonClassName}`}
+          className={`inline-flex min-h-13 shrink-0 items-center justify-center rounded-full bg-[#C99218] px-6 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-[#08111a] transition hover:bg-[#DFAB2C] ${buttonClassName}`}
         >
           {booking.buttonLabel}
         </a>
