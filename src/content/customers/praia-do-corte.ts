@@ -57,7 +57,7 @@ export const praiaDoCorteContent = {
       "Estilo com personalidade",
     ],
     stats: [
-      { value: "2 barbeiros", label: "Atendimento direto com Natanael e Ryck" },
+      { value: "2 barbeiros", label: "Atendimento direto com Ryck e Natanael" },
       { value: "WhatsApp", label: "Confirmação rápida e sem burocracia" },
       { value: "São Paulo", label: "Presença local com atendimento próximo" },
     ],
