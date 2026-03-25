@@ -39,7 +39,7 @@ export function PraiaBookingControls({ className = "", buttonClassName = "", sel
             id={selectId}
             value={selectedContact.phoneDigits}
             onChange={(event) => setSelectedPhone(event.target.value)}
-            className="min-h-13 w-full appearance-none rounded-full border border-white/12 bg-[rgba(4,20,36,0.92)] px-5 pr-12 text-sm font-semibold uppercase tracking-[0.12em] text-white outline-none transition focus:border-[#3FA7D6]"
+            className="min-h-13 w-full appearance-none rounded-full border border-white/12 bg-[rgba(10,32,28,0.92)] px-5 pr-12 text-sm font-semibold uppercase tracking-[0.12em] text-[#F3EAD8] outline-none transition focus:border-[#7BD3C6]"
           >
             {availableContacts.map((contact) => (
               <option key={contact.phoneDigits} value={contact.phoneDigits}>
@@ -47,20 +47,20 @@ export function PraiaBookingControls({ className = "", buttonClassName = "", sel
               </option>
             ))}
           </select>
-          <span className="pointer-events-none absolute inset-y-0 right-5 flex items-center text-[#a7c5da]">▾</span>
+          <span className="pointer-events-none absolute inset-y-0 right-5 flex items-center text-[#9DB7AF]">▾</span>
         </div>
 
         <a
           href={createWhatsappHref(selectedContact.phoneDigits, selectedContact.name)}
           target="_blank"
           rel="noreferrer"
-          className={`inline-flex min-h-13 shrink-0 items-center justify-center rounded-full bg-[#C99218] px-6 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-[#08111a] transition hover:bg-[#DFAB2C] ${buttonClassName}`}
+          className={`inline-flex min-h-13 shrink-0 items-center justify-center rounded-full bg-[#E7C88A] px-6 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-[#08110f] transition hover:bg-[#F1D9A7] ${buttonClassName}`}
         >
           {booking.buttonLabel}
         </a>
       </div>
 
-      {booking.helper ? <p className="mt-3 text-sm leading-6 text-[#a7c5da]">{booking.helper}</p> : null}
+      {booking.helper ? <p className="mt-3 text-sm leading-6 text-[#9DB7AF]">{booking.helper}</p> : null}
     </div>
   );
 }

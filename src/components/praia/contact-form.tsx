@@ -86,7 +86,7 @@ export function PraiaContactForm() {
             id="contact-professional"
             value={values.professional}
             onChange={(event) => handleChange("professional", event.target.value)}
-            className="w-full rounded-2xl border border-white/10 bg-[#071f36] px-4 py-3 text-sm text-white outline-none transition focus:border-[#3FA7D6]"
+            className="w-full rounded-2xl border border-white/10 bg-[#0B221E] px-4 py-3 text-sm text-[#F3EAD8] outline-none transition focus:border-[#7BD3C6]"
           >
             {availableContacts.map((contactItem) => (
               <option key={contactItem.phoneDigits} value={contactItem.phoneDigits}>
@@ -94,7 +94,7 @@ export function PraiaContactForm() {
               </option>
             ))}
           </select>
-          {errors.professional ? <p className="mt-2 text-sm text-[#C99218]">{errors.professional}</p> : null}
+          {errors.professional ? <p className="mt-2 text-sm text-[#E7C88A]">{errors.professional}</p> : null}
         </div>
 
         <div>
@@ -107,9 +107,9 @@ export function PraiaContactForm() {
             value={values.name}
             onChange={(event) => handleChange("name", event.target.value)}
             placeholder={placeholders.name}
-            className="w-full rounded-2xl border border-white/10 bg-[#071f36] px-4 py-3 text-sm text-white outline-none transition placeholder:text-[#7ca3bf] focus:border-[#3FA7D6]"
+            className="w-full rounded-2xl border border-white/10 bg-[#0B221E] px-4 py-3 text-sm text-[#F3EAD8] outline-none transition placeholder:text-[#84A59A] focus:border-[#7BD3C6]"
           />
-          {errors.name ? <p className="mt-2 text-sm text-[#C99218]">{errors.name}</p> : null}
+          {errors.name ? <p className="mt-2 text-sm text-[#E7C88A]">{errors.name}</p> : null}
         </div>
 
         <div>
@@ -122,9 +122,9 @@ export function PraiaContactForm() {
             value={values.phone}
             onChange={(event) => handleChange("phone", event.target.value)}
             placeholder={placeholders.phone}
-            className="w-full rounded-2xl border border-white/10 bg-[#071f36] px-4 py-3 text-sm text-white outline-none transition placeholder:text-[#7ca3bf] focus:border-[#3FA7D6]"
+            className="w-full rounded-2xl border border-white/10 bg-[#0B221E] px-4 py-3 text-sm text-[#F3EAD8] outline-none transition placeholder:text-[#84A59A] focus:border-[#7BD3C6]"
           />
-          {errors.phone ? <p className="mt-2 text-sm text-[#C99218]">{errors.phone}</p> : null}
+          {errors.phone ? <p className="mt-2 text-sm text-[#E7C88A]">{errors.phone}</p> : null}
         </div>
 
         <div>
@@ -137,21 +137,21 @@ export function PraiaContactForm() {
             value={values.message}
             onChange={(event) => handleChange("message", event.target.value)}
             placeholder={placeholders.message}
-            className="w-full rounded-2xl border border-white/10 bg-[#071f36] px-4 py-3 text-sm text-white outline-none transition placeholder:text-[#7ca3bf] focus:border-[#3FA7D6]"
+            className="w-full rounded-2xl border border-white/10 bg-[#0B221E] px-4 py-3 text-sm text-[#F3EAD8] outline-none transition placeholder:text-[#84A59A] focus:border-[#7BD3C6]"
           />
-          {errors.message ? <p className="mt-2 text-sm text-[#C99218]">{errors.message}</p> : null}
+          {errors.message ? <p className="mt-2 text-sm text-[#E7C88A]">{errors.message}</p> : null}
         </div>
 
         <button
           type="submit"
-          className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#C99218] px-5 py-3 text-sm font-semibold text-[#08111a] transition hover:bg-[#DFAB2C]"
+          className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#E7C88A] px-5 py-3 text-sm font-semibold text-[#08110f] transition hover:bg-[#F1D9A7]"
         >
           {submitLabel}
         </button>
       </div>
 
-      {helper ? <p className="mt-4 text-sm leading-6 text-[#a7c5da]">{helper}</p> : null}
-      {submitted ? <p className="mt-3 text-sm font-medium text-[#2ECC71]">{successLabel}</p> : null}
+      {helper ? <p className="mt-4 text-sm leading-6 text-[#9DB7AF]">{helper}</p> : null}
+      {submitted ? <p className="mt-3 text-sm font-medium text-[#7BD3C6]">{successLabel}</p> : null}
     </form>
   );
 }
